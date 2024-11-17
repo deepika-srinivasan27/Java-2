@@ -2,7 +2,7 @@ package Advanced;
 
 import java.util.Scanner;
 
-public class FibonacciSeries {
+public class Pro_eight {
     public static void main(String[] args) {
         // Create a scanner object for user input
         Scanner scanner = new Scanner(System.in);
