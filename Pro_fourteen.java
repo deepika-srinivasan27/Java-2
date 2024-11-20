@@ -3,43 +3,44 @@ package Advanced;
 import java.util.Map;
 import java.util.TreeMap;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class Pro_fourteen {
     public static void main(String[] args) {
-        // Create a TreeMap (automatically sorts keys)
-        Map<String, Integer> studentScores = new TreeMap<>();
+        // Create a LinkedHashMap
+        Map<String, String> countryCapitals = new LinkedHashMap<>();
 
         // Add elements to the map
-        studentScores.put("John", 85);
-        studentScores.put("Alice", 92);
-        studentScores.put("Bob", 74);
-        studentScores.put("Diana", 88);
+        countryCapitals.put("USA", "Washington, D.C.");
+        countryCapitals.put("India", "New Delhi");
+        countryCapitals.put("Germany", "Berlin");
+        countryCapitals.put("Japan", "Tokyo");
 
-        // Display the map (sorted by keys)
-        System.out.println("Student Scores (sorted by name):");
-        for (Map.Entry<String, Integer> entry : studentScores.entrySet()) {
+        // Display the map (insertion order is preserved)
+        System.out.println("Country and their Capitals (Insertion Order):");
+        for (Map.Entry<String, String> entry : countryCapitals.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
 
-        // Find a specific student's score
-        String student = "Alice";
-        if (studentScores.containsKey(student)) {
-            System.out.println(student + "'s score: " + studentScores.get(student));
-        } else {
-            System.out.println(student + " is not in the list.");
-        }
+        // Access a specific capital
+        String country = "India";
+        System.out.println("\nThe capital of " + country + " is " + countryCapitals.get(country));
 
-        // Find the highest and lowest scores using first and last entry
-        System.out.println("\nTop student:");
-        System.out.println(studentScores.lastEntry().getKey() + ": " + studentScores.lastEntry().getValue());
-
-        System.out.println("\nLowest scoring student:");
-        System.out.println(studentScores.firstEntry().getKey() + ": " + studentScores.firstEntry().getValue());
-
-        // Update a student's score
-        studentScores.put("Bob", 80);
-        System.out.println("\nUpdated Scores:");
-        for (Map.Entry<String, Integer> entry : studentScores.entrySet()) {
+        // Remove an entry
+        countryCapitals.remove("Germany");
+        System.out.println("\nAfter removing Germany:");
+        for (Map.Entry<String, String> entry : countryCapitals.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
+
+        // Check if a key or value exists
+        System.out.println("\nDoes the map contain Japan? " + countryCapitals.containsKey("Japan"));
+        System.out.println("Does the map contain Berlin? " + countryCapitals.containsValue("Berlin"));
+
+        // Clear the map
+        countryCapitals.clear();
+        System.out.println("\nMap after clearing: " + countryCapitals);
     }
 }
+
