@@ -1,43 +1,42 @@
 package Advanced;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Pro_thirteen {
     public static void main(String[] args) {
-        // Create a HashMap
-        Map<String, Integer> fruitPrices = new HashMap<>();
+        // Create a LinkedHashMap
+        Map<String, String> countryCapitals = new LinkedHashMap<>();
 
         // Add elements to the map
-        fruitPrices.put("Apple", 150);
-        fruitPrices.put("Banana", 40);
-        fruitPrices.put("Cherry", 200);
-        fruitPrices.put("Date", 120);
+        countryCapitals.put("USA", "Washington, D.C.");
+        countryCapitals.put("India", "New Delhi");
+        countryCapitals.put("Germany", "Berlin");
+        countryCapitals.put("Japan", "Tokyo");
 
-        // Display the map
-        System.out.println("Fruit prices: " + fruitPrices);
-
-        // Accessing a value
-        String fruit = "Apple";
-        if (fruitPrices.containsKey(fruit)) {
-            System.out.println(fruit + " costs: " + fruitPrices.get(fruit));
-        } else {
-            System.out.println(fruit + " is not available.");
-        }
-
-        // Iterate through the map
-        System.out.println("Available fruits and their prices:");
-        for (Map.Entry<String, Integer> entry : fruitPrices.entrySet()) {
+        // Display the map (insertion order is preserved)
+        System.out.println("Country and their Capitals (Insertion Order):");
+        for (Map.Entry<String, String> entry : countryCapitals.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
 
-        // Remove an element
-        fruitPrices.remove("Banana");
-        System.out.println("After removing Banana: " + fruitPrices);
+        // Access a specific capital
+        String country = "India";
+        System.out.println("\nThe capital of " + country + " is " + countryCapitals.get(country));
+
+        // Remove an entry
+        countryCapitals.remove("Germany");
+        System.out.println("\nAfter removing Germany:");
+        for (Map.Entry<String, String> entry : countryCapitals.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
 
         // Check if a key or value exists
-        System.out.println("Is Cherry available? " + fruitPrices.containsKey("Cherry"));
-        System.out.println("Is there any fruit costing 40? " + fruitPrices.containsValue(40));
+        System.out.println("\nDoes the map contain Japan? " + countryCapitals.containsKey("Japan"));
+        System.out.println("Does the map contain Berlin? " + countryCapitals.containsValue("Berlin"));
+
+        // Clear the map
+        countryCapitals.clear();
+        System.out.println("\nMap after clearing: " + countryCapitals);
     }
 }
-
